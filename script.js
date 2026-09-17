@@ -1,11 +1,24 @@
-console.log("Portfolio website loaded successfully!");
+// Mobile navigation menu
+const menuToggle = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
 
-document.querySelectorAll(".nav-links a").forEach(function(link) {
-
-    link.addEventListener("click", function() {
-
-        console.log("Navigation link clicked");
-
+if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
     });
 
-});
+    // Close menu after clicking a navigation link
+    document.querySelectorAll(".nav-links a").forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+        });
+    });
+}
+
+
+// Automatically display the current year
+const currentYear = document.getElementById("current-year");
+
+if (currentYear) {
+    currentYear.textContent = new Date().getFullYear();
+}
